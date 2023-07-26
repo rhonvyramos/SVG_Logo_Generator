@@ -1,4 +1,5 @@
 const inquirer = require("inquirer");
+const fs = require("fs");
 
 // array of objects holding required inquirer prompts
 const inquirer_prompts = [
@@ -81,16 +82,40 @@ function prompt_logo_inputs() {
     .prompt(inquirer_prompts)
     .then((selections) => {
         let text, shape, text_color, shape_color;
+
         if(selections.text_color_manual_input) { selections.text_color = selections.text_color_manual_input };
         if(selections.shape_color_manual_input) { selections.shape_color = selections.shape_color_manual_input };
+
         [text, shape, text_color, shape_color] = [selections.characters,  selections.shape, selections.text_color, selections.shape_color];
-        console.log(text, shape, text_color, shape_color);
-        console.log("Logo generated.");
+
+        // generates the logo using selections attributes
+        logo_generator(text, shape, text_color, shape_color);
     });
 };
 
-function logo_generator() {
+// function that generates the SVG logo
+function logo_generator(text, shape, text_color, shape_color) {
+    console.log(text, shape, text_color, shape_color);
 
+
+    const svg_logo_syntax =
+`<!DOCTYPE html>
+<html>
+    <body>
+        <svg height="100" width="100">
+            <circle cx="50" cy="50" r="33" stroke="black" stroke-width="3" fill="violet" />
+            Sorry, your browser does not support inline SVG.  
+        </svg>
+    </body>
+</html>`
+
+    fs.writeFile("svg_logo", svg_logo_syntax, (err) => {
+        if(err) {
+            console.log("ya dingus");
+        } else {
+            console.log("Logo generated.");
+        }
+    });
 };
 
 // init function begins program execution
