@@ -1,6 +1,6 @@
 <svg height="800" width="800">
-    <rect y="205" x="205" width="400" height="400" fill="green" />
-    <text x="400" y="400" font-size="72" text-anchor="middle" dominant-baseline="middle" fill="yellow">
+    <circle cx="400" cy="400" r="160" fill="black"/>
+    <text x="400" y="400" font-size="72" text-anchor="middle" dominant-baseline="middle" fill="black">
     SVG
     </text>
 </svg>

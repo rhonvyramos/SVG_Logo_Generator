@@ -6,7 +6,10 @@ const inquirer_prompts = [
     {
         name: "characters",
         message: "Select three characters for your logo. -> ",
-        default: ""
+        default: "SVG",
+        validate: (input, selections) => {
+            return input.length <= 3 ? true: selections.message = "Only up to three characters allowed";
+        }
     },
     {
         type: "list",
@@ -25,6 +28,15 @@ const inquirer_prompts = [
             "manual color hex input"
         ],
         default: "black",
+    },
+    // this prompt should only appear when the user selects manual color hex input for text
+    {
+        name: "text_color_manual_input",
+        message: "Enter color HEX value for your text. -> ",
+        default: "",
+        when: (selections) => {
+            return selections.text_color == "manual color hex input"
+        }
     },
     {
         type: "list",
@@ -55,16 +67,11 @@ const inquirer_prompts = [
         ],
         default: "black"
     },
-    {
-        name: "text_color_manual_input",
-        message: "Enter color HEX value for your text. -> ",
-        when: (selections) => {
-            return selections.text_color == "manual color hex input"
-        }
-    },
+    // this prompt should only appear when the user selects manual color hex input for text
     {
         name: "shape_color_manual_input",
         message: "Enter color HEX value for your shape. -> ",
+        default: "",
         when: (selections) => {
             return selections.shape_color == "manual color hex input"
         }
@@ -81,8 +88,12 @@ function prompt_logo_inputs() {
     inquirer
     .prompt(inquirer_prompts)
     .then((selections) => {
+        console.log(selections)
+
         let text, shape, text_color, shape_color;
 
+        // assigns text_color attribute to text_color_manual_input attribute
+        // if manual input prompts where answered
         if(selections.text_color_manual_input) { selections.text_color = selections.text_color_manual_input };
         if(selections.shape_color_manual_input) { selections.shape_color = selections.shape_color_manual_input };
 
@@ -95,7 +106,15 @@ function prompt_logo_inputs() {
 
 // function that generates the SVG logo
 function logo_generator(text, shape, text_color, shape_color) {
-    console.log(text, shape, text_color, shape_color);
+    if(text.length > 3) { 
+        console.log("Your input text is too long.") 
+        return 
+    }
+
+    console.log("Text: ", text);
+    console.log("Shape: ", shape);
+    console.log("Text Color: ", text_color);
+    console.log("Shape Color: ", shape_color);
 
     // svg syntax for either circle, rectangle, or triangle
     // written syntax based from https://www.w3schools.com/graphics/svg_examples.asp
@@ -127,9 +146,9 @@ function logo_generator(text, shape, text_color, shape_color) {
     // writes to svg_logo.svg file
     fs.writeFile("svg_logo.svg", svg_logo, (err) => {
         if(err) {
-            console.log("ya dingus");
+            console.log("Something wrong happened. Probably your fault, to be honest.");
         } else {
-            console.log("Logo generated.");
+            console.log("svg_logo.svg generated.");
         }
     });
 };
