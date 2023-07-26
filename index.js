@@ -97,12 +97,25 @@ function prompt_logo_inputs() {
 function logo_generator(text, shape, text_color, shape_color) {
     console.log(text, shape, text_color, shape_color);
 
-    if(shape == "rectangle") { shape = "rect"}
+    // svg syntax for either circle, rectangle, or triangle
+    // written syntax based from https://www.w3schools.com/graphics/svg_examples.asp
+    let shape_syntax;
+
+    if(shape == "circle") {
+        shape_syntax = `<circle cx="400" cy="400" r="160" fill="${shape_color}"/>`
+    }
+
+    if(shape == "square") {
+        shape_syntax = `<rect y="250" x="250" width="400" height="400" fill="${shape_color}" />`
+    }
+
+    if(shape == "triangle") {
+        shape_syntax = `<polygon points="400,100 700,650 100,650" fill="${shape_color}"/>`
+    }
 
     const svg_logo = 
 `<svg height="800" width="800">
-    <circle cx="400" cy="400" r="160" fill="${shape_color}"/>
-    Sorry, your browser does not support inline SVG.  
+    ${shape_syntax}
 </svg>`
 
     fs.writeFile("svg_logo.svg", svg_logo, (err) => {

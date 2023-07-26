@@ -1,4 +1,3 @@
 <svg height="800" width="800">
-    <circle cx="400" cy="400" r="160" fill="red"/>
-    Sorry, your browser does not support inline SVG.  
+    <rect y="250" x="250" width="400" height="400" fill="black" />
 </svg>
