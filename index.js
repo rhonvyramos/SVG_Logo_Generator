@@ -1,19 +1,11 @@
 const inquirer = require("inquirer");
 
-let selected_text_color_hex = false;
-let selected_shape_color_hex = false;
-
 const inquirer_prompts = [
     {
         type: "",
         name: "characters",
         message: "Select three characters for your logo. -> ",
-        default: (selections) => {
-            if (selections.characters == "" ||
-                selections.characters == null) { 
-                return selections.characters = ""
-            };
-        }
+        default: ""
     },
     {
         type: "list",
@@ -64,24 +56,37 @@ const inquirer_prompts = [
     },
 ];
 
-inquirer
-.prompt(inquirer_prompts)
-.then((selections) => {
+// calls prompt logo generator function that houses inquirer object for logo generation prompts
+function init() {
+    prompt_logo_generator();
+};
 
-    // flips booleans to true if choice is manual hex input
-    if(selections.text_color == "manual color hex input") { manual_text_color_input() }
-    if(selections.shape_color == "manual color hex input") { selected_shape_color_hex = true }
-});
+function prompt_logo_generator() {
+    inquirer
+    .prompt(inquirer_prompts)
+    .then((selections) => {
+        console.log("Logo generated.");
+    });
+};
+
 
 function manual_text_color_input() {
+    let hex_input;
     inquirer
         .prompt([
             {
                 name: "manual_color_hex_input",
-                message: "Enter the color HEX value for your text. -> "
+                message: "Enter the color HEX value. -> "
             }
         ])
         .then((hex) => {
-            console.log(hex.manual_color_hex_input);
+            console.log(hex.manual_color_hex_input);   
+            hex_input = hex.manual_color_hex_input
         });
-}
+
+    return hex_input;
+};
+
+// init function begins program execution
+init();
+
