@@ -72,16 +72,25 @@ const inquirer_prompts = [
 
 // calls prompt logo generator function that houses inquirer object for logo generation prompts
 function init() {
-    prompt_logo_generator();
+    prompt_logo_inputs();
 };
 
 // function that executes inquirer to prompt user for logo attributes
-function prompt_logo_generator() {
+function prompt_logo_inputs() {
     inquirer
     .prompt(inquirer_prompts)
     .then((selections) => {
+        let text, shape, text_color, shape_color;
+        if(selections.text_color_manual_input) { selections.text_color = selections.text_color_manual_input };
+        if(selections.shape_color_manual_input) { selections.shape_color = selections.shape_color_manual_input };
+        [text, shape, text_color, shape_color] = [selections.characters,  selections.shape, selections.text_color, selections.shape_color];
+        console.log(text, shape, text_color, shape_color);
         console.log("Logo generated.");
     });
+};
+
+function logo_generator() {
+
 };
 
 // init function begins program execution
