@@ -97,13 +97,15 @@ function prompt_logo_inputs() {
 function logo_generator(text, shape, text_color, shape_color) {
     console.log(text, shape, text_color, shape_color);
 
+    if(shape == "rectangle") { shape = "rect"}
+
     const svg_logo = 
-`<svg height="100" width="100">
-    <circle cx="50" cy="50" r="33" stroke="black" stroke-width="3" fill="violet" />
+`<svg height="800" width="800">
+    <circle cx="400" cy="400" r="160" fill="${shape_color}"/>
     Sorry, your browser does not support inline SVG.  
 </svg>`
 
-    fs.writeFile("svg_logo.svg", svg_logo_syntax, (err) => {
+    fs.writeFile("svg_logo.svg", svg_logo, (err) => {
         if(err) {
             console.log("ya dingus");
         } else {
