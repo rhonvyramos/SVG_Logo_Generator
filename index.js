@@ -97,19 +97,13 @@ function prompt_logo_inputs() {
 function logo_generator(text, shape, text_color, shape_color) {
     console.log(text, shape, text_color, shape_color);
 
+    const svg_logo = 
+`<svg height="100" width="100">
+    <circle cx="50" cy="50" r="33" stroke="black" stroke-width="3" fill="violet" />
+    Sorry, your browser does not support inline SVG.  
+</svg>`
 
-    const svg_logo_syntax =
-`<!DOCTYPE html>
-<html>
-    <body>
-        <svg height="100" width="100">
-            <circle cx="50" cy="50" r="33" stroke="black" stroke-width="3" fill="violet" />
-            Sorry, your browser does not support inline SVG.  
-        </svg>
-    </body>
-</html>`
-
-    fs.writeFile("svg_logo", svg_logo_syntax, (err) => {
+    fs.writeFile("svg_logo.svg", svg_logo_syntax, (err) => {
         if(err) {
             console.log("ya dingus");
         } else {
