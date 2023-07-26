@@ -107,7 +107,7 @@ function logo_generator(text, shape, text_color, shape_color) {
     }
 
     if(shape == "square") {
-        shape_syntax = `<rect y="250" x="250" width="400" height="400" fill="${shape_color}" />`
+        shape_syntax = `<rect y="202" x="202" width="400" height="400" fill="${shape_color}" />`
     }
 
     if(shape == "triangle") {

@@ -1,6 +1,6 @@
 <svg height="800" width="800">
-    <polygon points="400,100 700,650 100,650" fill="black"/>
-    <text x="400" y="400" font-size="72" text-anchor="middle" dominant-baseline="middle" fill="red">
-    GRT
+    <rect y="205" x="205" width="400" height="400" fill="green" />
+    <text x="400" y="400" font-size="72" text-anchor="middle" dominant-baseline="middle" fill="yellow">
+    SVG
     </text>
 </svg>
