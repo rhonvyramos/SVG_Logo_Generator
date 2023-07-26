@@ -66,7 +66,7 @@ const inquirer_prompts = [
         name: "shape_color_manual_input",
         message: "Enter color HEX value for your shape. -> ",
         when: (selections) => {
-            return selections.text_color == "manual color hex input"
+            return selections.shape_color == "manual color hex input"
         }
     },
 ];
@@ -101,6 +101,7 @@ function logo_generator(text, shape, text_color, shape_color) {
     // written syntax based from https://www.w3schools.com/graphics/svg_examples.asp
     let shape_syntax;
 
+    // shape is used to determine the SVG shape syntax
     if(shape == "circle") {
         shape_syntax = `<circle cx="400" cy="400" r="160" fill="${shape_color}"/>`
     }
@@ -118,6 +119,7 @@ function logo_generator(text, shape, text_color, shape_color) {
     ${shape_syntax}
 </svg>`
 
+    // writes to svg_logo.svg file
     fs.writeFile("svg_logo.svg", svg_logo, (err) => {
         if(err) {
             console.log("ya dingus");
