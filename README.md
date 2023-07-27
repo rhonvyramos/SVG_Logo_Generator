@@ -12,8 +12,10 @@ When all prompts are exhausted, the output will be a file named "svg_logo.svg" t
 
 ## Screenshots
 Example prompts:
+
 ![Example Terminal Prompts](image.png)
 
 Example output logo:
+
 ![Example Completed Output Logo](image-1.png)
 
