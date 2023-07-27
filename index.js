@@ -161,3 +161,6 @@ function logo_generator(text, shape, text_color, shape_color) {
 // init function begins program execution
 init();
 
+module.exports = (prompts) => {
+    return inquirer.prompt(prompts).then(console.log("output done"));
+}

@@ -19,3 +19,9 @@ Example output logo:
 
 ![Example Completed Output Logo](image-1.png)
 
+## Video Demo
+Below is the link to a simple video demonstration:
+
+https://streamable.com/l6laps
+
+
