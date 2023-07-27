@@ -19,9 +19,17 @@ Example output logo:
 
 ![Example Completed Output Logo](image-1.png)
 
+Testing:
+
+![Testing](image-2.png)
+
 ## Video Demo
 Below is the link to a simple video demonstration:
 
 https://streamable.com/l6laps
+
+Below is the link a video demonstration of the test:
+
+https://streamable.com/dwn6fo
 
 
