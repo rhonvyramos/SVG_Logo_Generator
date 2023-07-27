@@ -135,12 +135,17 @@ function logo_generator(text, shape, text_color, shape_color) {
 
     // final svg syntax to place within appropriate html files
     const svg_logo = 
-`<svg height="800" width="800">
+`<!DOCTYPE html>
+<html>
+<body>
+<svg height="800" width="800">
     ${shape_syntax}
     <text x="400" y="400" font-size="72" text-anchor="middle" dominant-baseline="middle" fill="${text_color}">
     ${text}
     </text>
 </svg>
+</body>
+</html>
 `
 
     // writes to svg_logo.svg file

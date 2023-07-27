@@ -10,6 +10,10 @@ After running node index.js inside an integrated terminal, the user will be gree
 
 When all prompts are exhausted, the output will be a file named "svg_logo.svg" that is an .svg file containing the svg markup syntax that can be inserted within proper html markup. Displayed in a browser through the html, the svg syntax will display the desired logo.
 
-## Screenshot
+## Screenshots
+Example prompts:
+![Example Terminal Prompts](image.png)
 
+Example output logo:
+![Example Completed Output Logo](image-1.png)
 
